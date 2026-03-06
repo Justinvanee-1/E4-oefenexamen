@@ -10,20 +10,25 @@
 
     <Grid Padding="40">
         <StackPanel Spacing="12" Width="300">
+            <TextBlock Text="Dreamscape"
+                       FontSize="30"
+                       FontWeight="Bold"
+                       Foreground="Blue" />
 
             <TextBlock Text="Inloggen"
-                       FontSize="24"
-                       FontWeight="Bold" />
+                   FontSize="18"/>
 
-            <TextBox Header="Gebruikersnaam" />
-            <PasswordBox Header="Wachtwoord" />
+            <TextBox x:Name="UsernameTextBox" Header="Gebruikersnaam" />
+            <PasswordBox x:Name="PasswordBoxControl" Header="Wachtwoord" />
 
-            <Button Content="Inloggen"
-                    HorizontalAlignment="Stretch" />
+            <HyperlinkButton x:Name="LoginButton"
+                         Content="Inloggen"
+                         Click="Login_Click"
+                         HorizontalAlignment="Stretch" />
 
             <HyperlinkButton Content="Nog geen account? Maak er één aan"
-                             HorizontalAlignment="Center"
-                             Click="CreateAccount_Click"/>
+                         HorizontalAlignment="Center"
+                         Click="CreateAccount_Click"/>
 
         </StackPanel>
     </Grid>

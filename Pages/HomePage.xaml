@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="E4_Project.Pages.HomePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:E4_Project.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Padding="40">
+        <StackPanel Width="auto">
+            <TextBlock Text="Dreamscape"
+                       HorizontalAlignment="Center"
+           FontSize="40"
+           FontWeight="Bold"
+           Foreground="Blue" />
+            <TextBlock Text="inventory beheren"
+                       HorizontalAlignment="Center"
+                    FontSize="24"
+                    FontWeight="Bold"/>
+            <Button Content="Inventory"
+                 HorizontalAlignment="Center"/>
+
+
+        </StackPanel>
+
+    </Grid>
+</Page>

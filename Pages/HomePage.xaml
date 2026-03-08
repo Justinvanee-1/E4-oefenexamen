@@ -8,27 +8,57 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Padding="40">
-        <StackPanel Width="auto">
-            <TextBlock Text="Dreamscape"
-                       HorizontalAlignment="Center"
-           FontSize="40"
-           FontWeight="Bold"
-           Foreground="Blue" />
-            <TextBlock Text="inventory beheren"
-                       HorizontalAlignment="Center"
-                    FontSize="24"
-                    FontWeight="Bold"/>
-            <Button Content="Inventory"
-                    Click="Inventory_Click"
-                 HorizontalAlignment="Center"/>
-            <Button Content="Market"
-                     Click="Market_Click"
-                 HorizontalAlignment="Center"/>
-            
+    <Grid Padding="40" Background="#f0f4f8">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="25">
 
+            <!-- Titel -->
+            <TextBlock Text="Dreamscape"
+                   HorizontalAlignment="Center"
+                   FontSize="48"
+                   FontWeight="Bold"
+                   Foreground="Blue"/>
+
+            <!-- Subtitel -->
+            <TextBlock Text="Inventory beheren"
+                   HorizontalAlignment="Center"
+                   FontSize="24"
+                   FontWeight="SemiBold"
+                   Foreground="#34495e"/>
+
+
+            <!-- Knoppen -->
+            <StackPanel Spacing="15" HorizontalAlignment="Center">
+
+                <!-- Inventory knop -->
+                <Button Content="Inventory"
+                    Click="Inventory_Click"
+                    Width="200"
+                    Height="50"
+                    Background="Green"
+                    Foreground="White"
+                    FontSize="18"
+                    FontWeight="Bold"
+                    CornerRadius="10"/>
+
+                <TextBlock Text="Bezoek market"     
+                    HorizontalAlignment="Center"
+                    FontSize="24"
+                    FontWeight="SemiBold"
+                    Foreground="#34495e"/>      
+
+                <!-- Market knop -->
+                <Button Content="Market"
+                    Click="Market_Click"
+                    Width="200"
+                    Height="50"
+                    Background="Red"
+                    Foreground="White"
+                    FontSize="18"
+                    FontWeight="Bold"
+                    CornerRadius="10"/>
+
+            </StackPanel>
 
         </StackPanel>
-
     </Grid>
 </Page>

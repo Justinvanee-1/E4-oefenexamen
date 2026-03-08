@@ -12,6 +12,7 @@ namespace E4_Project.Data
     {
         public DbSet<UserLogin> userLogins { get; set; }
         public DbSet<Inventory> Inventories { get; set; }
+        public DbSet<Market> MarketItems { get; set; }
 
         protected override void OnConfiguring(
             DbContextOptionsBuilder optionsBuilder)
@@ -90,6 +91,65 @@ namespace E4_Project.Data
             MagicalAddons = "Mana Boost"
         }
     );
+
+            modelBuilder.Entity<Market>().HasData(
+
+    new Market
+    {
+        MarketItemId = 1,
+        ItemName = "Fire Sword",
+        Description = "A sword engulfed in flames.",
+        Type = "Weapon",
+        Rarity = "Epic",
+        Power = "85",
+        Speed = "60",
+        Durability = "80",
+        MagicalAddons = "Fire Damage",
+        Price = 500
+    },
+
+    new Market
+    {
+        MarketItemId = 2,
+        ItemName = "Ice Wand",
+        Description = "A wand that freezes enemies.",
+        Type = "Weapon",
+        Rarity = "Rare",
+        Power = "65",
+        Speed = "70",
+        Durability = "60",
+        MagicalAddons = "Freeze Effect",
+        Price = 350
+    },
+
+    new Market
+    {
+        MarketItemId = 3,
+        ItemName = "Dragon Shield",
+        Description = "Shield made from dragon scales.",
+        Type = "Armor",
+        Rarity = "Legendary",
+        Power = "40",
+        Speed = "30",
+        Durability = "100",
+        MagicalAddons = "Fire Resistance",
+        Price = 800
+    },
+
+    new Market
+    {
+        MarketItemId = 4,
+        ItemName = "Speed Boots",
+        Description = "Boots that increase movement speed.",
+        Type = "Armor",
+        Rarity = "Epic",
+        Power = "10",
+        Speed = "95",
+        Durability = "50",
+        MagicalAddons = "Speed Boost",
+        Price = 450
+    }
+);
 
         }
     }

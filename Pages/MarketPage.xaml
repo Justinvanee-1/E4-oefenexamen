@@ -9,6 +9,42 @@
     mc:Ignorable="d">
 
     <Grid>
+        <StackPanel Padding="20" Spacing="10">
 
+            <Button Content="← Home" Click="Home_Click"/>
+
+            <TextBlock Text="Market"
+                   FontSize="30"
+                   FontWeight="Bold"/>
+
+            <ListView x:Name="MarketList">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="*,Auto,Auto" Padding="10">
+                            <StackPanel>
+                                <TextBlock Text="{Binding ItemName}" FontSize="18"/>
+                                <TextBlock Text="{Binding Rarity}"/>
+                                <TextBlock Text="{Binding PriceText}"/>
+                            </StackPanel>
+
+                            <!-- Details knop -->
+                            <Button Grid.Column="1"
+                                Content="Details"
+                                Tag="{Binding MarketItemId}"
+                                Click="Details_Click"
+                                Margin="5,0"/>
+
+                            <!-- Buy knop -->
+                            <Button Grid.Column="2"
+                                Content="Buy"
+                                Tag="{Binding MarketItemId}"
+                                Click="Buy_Click"
+                                Margin="5,0"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackPanel>
     </Grid>
 </Page>

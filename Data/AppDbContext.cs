@@ -11,8 +11,9 @@ namespace E4_Project.Data
     internal class AppDbContext : DbContext
     {
         public DbSet<UserLogin> userLogins { get; set; }
+        public DbSet<Inventory> Inventories { get; set; }
 
-    protected override void OnConfiguring(
+        protected override void OnConfiguring(
             DbContextOptionsBuilder optionsBuilder)
         {
             // building the database
@@ -35,6 +36,61 @@ namespace E4_Project.Data
                     
 
                 });
+            modelBuilder.Entity<Inventory>().HasData(
+        new Inventory
+        {
+            ItemId = 1,
+            UserId = 1,
+            ItemName = "Dragon Slayer Sword",
+            Description = "A legendary sword used to slay dragons.",
+            Type = "Weapon",
+            Rarity = "Legendary",
+            Power = "95",
+            Speed = "70",
+            Durability = "90",
+            MagicalAddons = "Fire Damage"
+        },
+        new Inventory
+        {
+            ItemId = 2,
+            UserId = 1,
+            ItemName = "Shadow Dagger",
+            Description = "A small dagger infused with dark magic.",
+            Type = "Weapon",
+            Rarity = "Epic",
+            Power = "60",
+            Speed = "95",
+            Durability = "50",
+            MagicalAddons = "Shadow Strike"
+        },
+        new Inventory
+        {
+            ItemId = 3,
+            UserId = 1,
+            ItemName = "Knight Armor",
+            Description = "Heavy armor worn by royal knights.",
+            Type = "Armor",
+            Rarity = "Rare",
+            Power = "20",
+            Speed = "30",
+            Durability = "95",
+            MagicalAddons = "Damage Resistance"
+        },
+        new Inventory
+        {
+            ItemId = 4,
+            UserId = 1,
+            ItemName = "Wizard Staff",
+            Description = "A magical staff used by ancient wizards.",
+            Type = "Weapon",
+            Rarity = "Epic",
+            Power = "85",
+            Speed = "40",
+            Durability = "70",
+            MagicalAddons = "Mana Boost"
+        }
+    );
+
         }
     }
 }

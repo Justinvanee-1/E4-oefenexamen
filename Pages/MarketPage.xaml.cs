@@ -21,21 +21,11 @@ namespace E4_Project.Pages
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class HomePage : Page
+    public sealed partial class MarketPage : Page
     {
-        public HomePage()
+        public MarketPage()
         {
             InitializeComponent();
-        }
-
-        private void Inventory_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(InventoryPage));
-        }
-
-        private void Market_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(MarketPage));
         }
     }
 }

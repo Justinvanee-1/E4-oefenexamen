@@ -20,7 +20,12 @@
                     FontSize="24"
                     FontWeight="Bold"/>
             <Button Content="Inventory"
+                    Click="Inventory_Click"
                  HorizontalAlignment="Center"/>
+            <Button Content="Market"
+                     Click="Market_Click"
+                 HorizontalAlignment="Center"/>
+            
 
 
         </StackPanel>

@@ -8,43 +8,120 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid>
-        <StackPanel Padding="20" Spacing="10">
+    <Grid Padding="20">
 
-            <Button Content="← Home" Click="Home_Click"/>
+        <StackPanel Spacing="15">
+
+            <Button Content="← Home"
+                HorizontalAlignment="Left"
+                Click="Home_Click"/>
 
             <TextBlock Text="Market"
-                   FontSize="30"
+                   FontSize="34"
                    FontWeight="Bold"/>
 
+            <!-- Filters -->
+            <StackPanel Orientation="Horizontal" Spacing="10">
+
+                <TextBox x:Name="SearchBox"
+                     PlaceholderText="Search items..."
+                     Width="220"
+                     TextChanged="FilterChanged"/>
+
+                <ComboBox x:Name="RarityFilter"
+          Width="150"
+          SelectedIndex="0"
+          SelectionChanged="FilterChanged">
+
+                    <ComboBoxItem Content="All Rarity"/>
+                    <ComboBoxItem Content="Common"/>
+                    <ComboBoxItem Content="Rare"/>
+                    <ComboBoxItem Content="Epic"/>
+                    <ComboBoxItem Content="Legendary"/>
+
+                </ComboBox>
+
+                <ComboBox x:Name="TypeFilter"
+          Width="150"
+          SelectedIndex="0"
+          SelectionChanged="FilterChanged">
+
+                    <ComboBoxItem Content="All Types"/>
+                    <ComboBoxItem Content="Sword"/>
+                    <ComboBoxItem Content="Staff"/>
+                    <ComboBoxItem Content="Armor"/>
+
+                </ComboBox>
+
+                <ComboBox x:Name="SortPrice"
+          Width="150"
+          SelectedIndex="0"
+          SelectionChanged="FilterChanged">
+
+                    <ComboBoxItem Content="Price ↑"/>
+                    <ComboBoxItem Content="Price ↓"/>
+
+                </ComboBox>
+
+            </StackPanel>
+
+            <!-- Market list -->
             <ListView x:Name="MarketList">
+
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Grid ColumnDefinitions="*,Auto,Auto" Padding="10">
-                            <StackPanel>
-                                <TextBlock Text="{Binding ItemName}" FontSize="18"/>
-                                <TextBlock Text="{Binding Rarity}"/>
-                                <TextBlock Text="{Binding PriceText}"/>
-                            </StackPanel>
 
-                            <!-- Details knop -->
-                            <Button Grid.Column="1"
-                                Content="Details"
-                                Tag="{Binding MarketItemId}"
-                                Click="Details_Click"
-                                Margin="5,0"/>
+                        <Border Padding="10"
+                            Margin="0,5"
+                            CornerRadius="8"
+                            BorderThickness="1"
+                            BorderBrush="Gray">
 
-                            <!-- Buy knop -->
-                            <Button Grid.Column="2"
-                                Content="Buy"
-                                Tag="{Binding MarketItemId}"
-                                Click="Buy_Click"
-                                Margin="5,0"/>
-                        </Grid>
+                            <Grid ColumnDefinitions="*,Auto,Auto,Auto">
+
+                                <StackPanel>
+
+                                    <TextBlock Text="{Binding ItemName}"
+                                           FontSize="18"
+                                           FontWeight="Bold"/>
+
+                                    <TextBlock Text="{Binding Type}"/>
+
+                                    <TextBlock Text="{Binding Rarity}"
+                                           Foreground="Orange"/>
+
+                                    <TextBlock Text="{Binding PriceText}"
+                                           FontWeight="SemiBold"/>
+
+                                </StackPanel>
+
+                                <Button Grid.Column="1"
+                                    Content="Details"
+                                    Tag="{Binding MarketItemId}"
+                                    Click="Details_Click"
+                                    Margin="5"/>
+
+                                <Button Grid.Column="2"
+                                    Content="Buy"
+                                    Tag="{Binding MarketItemId}"
+                                    Click="Buy_Click"
+                                    Margin="5"/>
+                                <Button Grid.Column="3"
+                                    Content="Trade"
+                                    Tag="{Binding MarketItemId}"
+                                    Click="Trade_Click"
+                                    Margin="5"/>    
+
+                            </Grid>
+
+                        </Border>
+
                     </DataTemplate>
                 </ListView.ItemTemplate>
+
             </ListView>
 
         </StackPanel>
+
     </Grid>
 </Page>

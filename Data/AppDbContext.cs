@@ -1,4 +1,4 @@
-﻿using E4_Project.Data.Models;
+using E4_Project.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -13,6 +13,8 @@ namespace E4_Project.Data
         public DbSet<UserLogin> userLogins { get; set; }
         public DbSet<Inventory> Inventories { get; set; }
         public DbSet<Market> MarketItems { get; set; }
+
+        public DbSet<TradeRequest> TradeRequests { get; set; }
 
         protected override void OnConfiguring(
             DbContextOptionsBuilder optionsBuilder)

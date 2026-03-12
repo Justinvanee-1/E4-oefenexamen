@@ -1,4 +1,4 @@
-﻿using E4_Project.Data;
+using E4_Project.Data;
 using E4_Project.Data.Models;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -27,16 +27,135 @@ namespace E4_Project.Pages
     {
         private AppDbContext db = new AppDbContext();
 
+        private List<Market> allItems;
+
+        private void LoadItems()
+        {
+            allItems = db.MarketItems.ToList();
+            MarketList.ItemsSource = allItems;
+        }
+
+        private void FilterChanged(object sender, object e)
+        {
+            ApplyFilters();
+        }
+
+        private void ApplyFilters()
+        {
+            if (allItems == null)
+                return;
+
+            var filtered = allItems.AsQueryable();
+
+            string search = SearchBox.Text?.ToLower() ?? "";
+
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                filtered = filtered.Where(i =>
+                    i.ItemName.ToLower().Contains(search) ||
+                    i.MagicalAddons.ToLower().Contains(search));
+            }
+
+            string rarity = (RarityFilter.SelectedItem as ComboBoxItem)?.Content.ToString();
+            if (rarity != null && rarity != "All Rarity")
+            {
+                filtered = filtered.Where(i => i.Rarity == rarity);
+            }
+
+            string type = (TypeFilter.SelectedItem as ComboBoxItem)?.Content.ToString();
+            if (type != null && type != "All Types")
+            {
+                filtered = filtered.Where(i => i.Type == type);
+            }
+
+            string sort = (SortPrice.SelectedItem as ComboBoxItem)?.Content.ToString();
+
+            if (sort == "Price ↑")
+                filtered = filtered.OrderBy(i => i.Price);
+
+            if (sort == "Price ↓")
+                filtered = filtered.OrderByDescending(i => i.Price);
+
+            MarketList.ItemsSource = filtered.ToList();
+        }
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (allItems == null)
+                return;
+
+            string search = SearchBox.Text.ToLower();
+
+            var filtered = allItems
+                .Where(i =>
+                    i.ItemName.ToLower().Contains(search) ||
+                    i.MagicalAddons.ToLower().Contains(search))
+                .ToList();
+
+            MarketList.ItemsSource = filtered;
+        }
+
+        private async void Trade_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = sender as Button;
+            int marketItemId = (int)btn.Tag;
+
+            var marketItem = db.MarketItems.FirstOrDefault(i => i.MarketItemId == marketItemId);
+
+            if (marketItem == null)
+                return;
+
+            var inventoryItems = db.Inventories.Where(i => i.UserId == 1).ToList();
+
+            ComboBox tradeItems = new ComboBox
+            {
+                ItemsSource = inventoryItems,
+                DisplayMemberPath = "ItemName"
+            };
+
+            ContentDialog tradeDialog = new ContentDialog
+            {
+                Title = $"Trade for {marketItem.ItemName}",
+                Content = tradeItems,
+                PrimaryButtonText = "Send Trade",
+                CloseButtonText = "Cancel",
+                XamlRoot = this.XamlRoot
+            };
+
+            var result = await tradeDialog.ShowAsync();
+
+            if (result == ContentDialogResult.Primary)
+            {
+                var selectedItem = tradeItems.SelectedItem as Inventory;
+
+                if (selectedItem == null)
+                    return;
+
+                TradeRequest trade = new TradeRequest
+                {
+                    OfferedItemId = selectedItem.ItemId,
+                    RequestedMarketItemId = marketItem.MarketItemId,
+                    Status = "Pending"
+                };
+
+                db.TradeRequests.Add(trade);
+                db.SaveChanges();
+
+                ContentDialog confirm = new ContentDialog
+                {
+                    Title = "Trade Sent",
+                    Content = "Trade request sent. Waiting for seller response.",
+                    CloseButtonText = "OK",
+                    XamlRoot = this.XamlRoot
+                };
+
+                await confirm.ShowAsync();
+            }
+        }
+
         public MarketPage()
         {
             this.InitializeComponent();
             LoadItems();
-        }
-
-        private void LoadItems()
-        {
-            // Zorg dat PriceText in je model aanwezig is
-            MarketList.ItemsSource = db.MarketItems.ToList();
         }
 
         private async void Details_Click(object sender, RoutedEventArgs e)

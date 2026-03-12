@@ -14,34 +14,50 @@
             <StackPanel Orientation="Horizontal" Spacing="10">
 
                 <Button Content="← Home"
-                Click="Home_Click"/>
+                    Click="Home_Click"/>
 
                 <Button Content="Add Item"
-                Click="AddItem_Click"/>
-
-                <ListView x:Name="InventoryList">
-
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <Grid ColumnDefinitions="*,Auto" Padding="10">
-
-                                <StackPanel>
-                                    <TextBlock Text="{Binding ItemName}" FontSize="18"/>
-                                    <TextBlock Text="{Binding Type}"/>
-                                </StackPanel>
-
-                                <Button Grid.Column="1"
-                                Content="Delete"
-                                Tag="{Binding ItemId}"
-                                Click="Delete_Click"/>
-                            </Grid>
-                        </DataTemplate>
-
-                    </ListView.ItemTemplate>
-
-                </ListView>
+                    Click="AddItem_Click"/>
 
             </StackPanel>
+
+            <!-- Zoekbalk -->
+            <TextBox x:Name="SearchBox"
+                 PlaceholderText="Search by item name or magical addon..."
+                 TextChanged="SearchBox_TextChanged"
+                 Width="300"/>
+
+            <ListView x:Name="InventoryList">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+
+                        <Grid ColumnDefinitions="*,Auto,Auto" Padding="10">
+
+                            <StackPanel>
+                                <TextBlock Text="{Binding ItemName}" FontSize="18"/>
+                                <TextBlock Text="{Binding Type}"/>
+                            </StackPanel>
+
+                            <Button Grid.Column="1"
+                                Content="Details"
+                                Tag="{Binding ItemId}"
+                                Click="Details_Click"
+                                Margin="5,0"/>
+
+                            <Button Grid.Column="2"
+                                Content="Delete"
+                                Tag="{Binding ItemId}"
+                                Click="Delete_Click"
+                                Margin="5,0"/>
+
+                        </Grid>
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+
         </StackPanel>
     </Grid>
 </Page>

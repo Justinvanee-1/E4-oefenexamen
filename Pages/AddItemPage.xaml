@@ -12,14 +12,45 @@
         <ScrollViewer>
             <StackPanel Padding="20" Spacing="10">
 
-                <TextBox x:Name="ItemNameBox" Header="Item Name"/>
-                <TextBox x:Name="DescriptionBox" Header="Description"/>
-                <TextBox x:Name="TypeBox" Header="Type"/>
-                <TextBox x:Name="RarityBox" Header="Rarity"/>
-                <TextBox x:Name="PowerBox" Header="Power"/>
-                <TextBox x:Name="SpeedBox" Header="Speed"/>
-                <TextBox x:Name="DurabilityBox" Header="Durability"/>
-                <TextBox x:Name="MagicalAddonsBox" Header="Magical Addons"/>
+                <TextBox x:Name="ItemNameBox"
+                     Header="Item Name"
+                     PlaceholderText="Enter the name of the item"/>
+
+                <TextBox x:Name="DescriptionBox"
+                     Header="Description"
+                     PlaceholderText="Describe the item"/>
+
+                <TextBox x:Name="TypeBox"
+                     Header="Type"
+                     PlaceholderText="Enter the type (Sword, Shield, Armor...)"/>
+
+                <ComboBox x:Name="RarityBox"
+                      Header="Rarity"
+                      PlaceholderText="Select item rarity">
+
+                    <ComboBoxItem Content="Common"/>
+                    <ComboBoxItem Content="Uncommon"/>
+                    <ComboBoxItem Content="Rare"/>
+                    <ComboBoxItem Content="Epic"/>
+                    <ComboBoxItem Content="Legendary"/>
+
+                </ComboBox>
+
+                <TextBox x:Name="PowerBox"
+                     Header="Power"
+                     PlaceholderText="Enter power value"/>
+
+                <TextBox x:Name="SpeedBox"
+                     Header="Speed"
+                     PlaceholderText="Enter speed value"/>
+
+                <TextBox x:Name="DurabilityBox"
+                     Header="Durability"
+                     PlaceholderText="Enter durability value"/>
+
+                <TextBox x:Name="MagicalAddonsBox"
+                     Header="Magical Addons"
+                     PlaceholderText="Enter magical effects (optional)"/>
 
                 <Button Content="Save Item"
                     Click="Save_Click"
@@ -27,6 +58,5 @@
 
             </StackPanel>
         </ScrollViewer>
-
     </Grid>
 </Page>

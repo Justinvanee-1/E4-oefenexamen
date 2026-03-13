@@ -8,7 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Padding="40" Background="Black">
+    <Grid Padding="40" Background="White">
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="25">
 
             <!-- Titel -->
@@ -23,7 +23,7 @@
                    HorizontalAlignment="Center"
                    FontSize="24"
                    FontWeight="SemiBold"
-                   Foreground="White"/>
+                   Foreground="Black"/>
 
 
             <!-- Knoppen -->
@@ -34,8 +34,8 @@
                     Click="Inventory_Click"
                     Width="200"
                     Height="50"
-                    Background="Green"
-                    Foreground="White"
+                    Background="#E0E0E0"
+                    Foreground="Black"
                     FontSize="18"
                     FontWeight="Bold"
                     CornerRadius="10"/>
@@ -44,15 +44,15 @@
                     HorizontalAlignment="Center"
                     FontSize="24"
                     FontWeight="SemiBold"
-                    Foreground="White"/>      
+                    Foreground="Black"/>      
 
                 <!-- Market knop -->
                 <Button Content="Market"
                     Click="Market_Click"
                     Width="200"
                     Height="50"
-                    Background="Red"
-                    Foreground="White"
+                    Background="#E0E0E0"
+                    Foreground="Black"
                     FontSize="18"
                     FontWeight="Bold"
                     CornerRadius="10"/>

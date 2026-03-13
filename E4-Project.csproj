@@ -19,6 +19,7 @@
     <None Remove="Pages\InventoryPage.xaml" />
     <None Remove="Pages\LoginPage.xaml" />
     <None Remove="Pages\MarketPage.xaml" />
+    <None Remove="Styling\CustomThemesResourceDictionary.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -75,6 +76,11 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="Pages\CreateAccountPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Styling\CustomThemesResourceDictionary.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

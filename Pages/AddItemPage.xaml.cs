@@ -40,7 +40,7 @@ namespace E4_Project.Pages
                 ItemName = ItemNameBox.Text,
                 Description = DescriptionBox.Text,
                 Type = TypeBox.Text,
-                Rarity = RarityBox.Text,
+                Rarity = (RarityBox.SelectedItem as ComboBoxItem)?.Content.ToString(),
                 Power = PowerBox.Text,
                 Speed = SpeedBox.Text,
                 Durability = DurabilityBox.Text,
